@@ -1,0 +1,13 @@
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+
+div[id*=app] {
+    padding: 20px;
+    background: #c1c1c1;
+    display: block;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Front-End, Web, HTML, CSS">
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <title>Vue Education</title>
+
+</head>
+<body>
+
+    <div id="app1">
+        <span v-bind:title="message"> Message from vue > {{ message }}</span>
+        <transition name="fade">
+            <span v-if="seen">Seen this text</span>
+        </transition>
+    </div>
+
+    <div id="app2">
+        <ol>
+            <li v-for="item in items">
+                {{ item.text }}
+            </li>
+        </ol>
+    </div>
+
+    <div id="app3">
+        <span>{{ message }}</span>
+        <input type="text" v-model="message" style="width: 100%;">
+        <button v-on:click="revertMessage">Клик</button>
+    </div>
+
+    <div id="app4">
+        <span v-if="show" v-html="message"> <strong>This is in sTrong tag with v-html derective</strong> Yep</span>
+        <span v-else> SUKA</span>
+    </div>
+
+    <div id="app5">
+        <input name="c1" type="checkbox" v-model="checked">
+        <label for="c1"> {{ checked }} </label>
+    </div>
+
+    <div id="app6">
+        <h1>{{ count }}</h1>
+        <button @click="countHudred"> +100 </button>
+        <button @click="countUp"> +1 </button>
+        <button @click="countDown"> -1 </button>
+        <button @click="resetCount"> Reset </button>
+    </div>
+
+    <div id="app7">
+        <h1>Link to: <a>{{ cleanUrl }}</a></h1>
+        <input type="text" v-model="url">
+        <button @click="cleanerUrl">Clean Url</button>
+    </div>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="main.js"></script>
+  
+</body>
+</html>
