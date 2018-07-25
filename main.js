@@ -84,3 +84,41 @@ var app7 = new Vue ({
         }
     }
 });
+
+Vue.component('todo-item', {
+    props: ['todo'],
+    template: '<li>{{ todo.item }}</li>'
+})
+
+var app8 = new Vue ({
+    el: "#app8",
+    data: {
+        items: [
+            { id: 0, item: "item1" },
+            { id: 1, item: "item2" },
+            { id: 2, item: "item3" },
+        ],
+    }
+})
+
+var app9 = new Vue ({
+    el: "#app9",
+    data: {
+        message: "Title",
+        msg: "Hello msg",
+        sizeToggle: false,
+        isRounded: false,
+        disabled: false,
+        fontColor: "#ccc",
+        backgroundColor: "#fc9"
+    },
+    computed: {
+        styles: function() {
+            return {
+                color: this.fontColor,
+                backgroundColor: this.backgroundColor
+            }
+        }
+    }
+    
+})

@@ -59,6 +59,32 @@
         <button @click="cleanerUrl">Clean Url</button>
     </div>
 
+    <div id="app8">
+        <ul>
+            <todo-item
+                v-for="item in items"
+                v-bind:todo="item"
+                v-bind:key="item.id">
+            </todo-item>
+        </ul>
+    </div>
+
+    <div id="app9">
+        <h1 @:title="msg">{{ message }}</h1>
+
+        <button v-bind:class="[sizeToggle ? 'large' : '', isRounded ? 'is-rounded' : '']"
+                v-bind:style="styles"
+                v-bind:disabled="disabled"
+                >START</button>
+
+        <ul>
+            <li><input type="checkbox" v-model="sizeToggle"><label for="">More size font</label></li>
+            <li><input type="checkbox" v-model="isRounded"><label for="">rounded</label></li>
+            <li><input type="checkbox" v-model="disabled"><label for="">Disable</label></li>
+            <li><input type="type" v-model="fontColor"></li>
+            <li><input type="type" v-model="backgroundColor"></li>
+        </ul>
+    </div>
   
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="main.js"></script>

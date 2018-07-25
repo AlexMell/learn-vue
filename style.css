@@ -11,3 +11,11 @@ div[id*=app] {
     display: block;
     margin-bottom: 10px;
 }
+
+.large {
+    font-size: 50px;
+}
+
+.is-rounded {
+    border-radius: 50px;
+}
