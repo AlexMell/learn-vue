@@ -9,85 +9,232 @@
     <meta name="description" content="Front-End, Web, HTML, CSS">
     <link rel="shortcut icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+
     <title>Vue Education</title>
 
+    <style>
+
+        button {
+            padding: 10px 20px;
+            background: #21242C;
+            color: #fff;
+            border: none;
+        }
+        .box {
+            width: 130px;
+            height: 100px;
+            background: coral;
+        }
+        .asd-enter-active {
+            animation: asd-in .5s;
+        }
+        .asd-leave-active {
+            animation: asd-in .5s reverse;
+        }
+        @keyframes asd-in {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+    </style>
 </head>
 <body>
 
-    <div id="app1">
-        <span v-bind:title="message"> Message from vue > {{ message }}</span>
-        <transition name="fade">
-            <span v-if="seen">Seen this text</span>
+<div id="app1">
+    <span v-bind:title="message"> Message from vue > {{ message }}</span>
+    <transition name="fade">
+        <span v-if="seen">Seen this text</span>
+    </transition>
+</div>
+
+<div id="app2">
+    <ol>
+        <li v-for="item in items">
+            {{ item.text }}
+        </li>
+    </ol>
+</div>
+
+<div id="app3">
+    <span>{{ message }}</span> <input type="text" v-model="message" style="width: 100%;">
+    <button v-on:click="revertMessage">Клик</button>
+</div>
+
+<div id="app4">
+    <span v-if="show" v-html="message"> <strong>This is in sTrong tag with v-html derective</strong> Yep</span>
+    <span v-else> SUKA</span>
+</div>
+
+<div id="app5">
+    <input name="c1" type="checkbox" v-model="checked"> <label for="c1"> {{ checked }} </label>
+</div>
+
+<div id="app6">
+    <h1>{{ count }}</h1>
+    <button @click="countHudred"> +100</button>
+    <button @click="countUp"> +1</button>
+    <button @click="countDown"> -1</button>
+    <button @click="resetCount"> Reset</button>
+</div>
+
+<div id="app7">
+    <h1>Link to: <a>{{ cleanUrl }}</a></h1>
+    <input type="text" v-model="url">
+    <button @click="cleanerUrl">Clean Url</button>
+</div>
+
+<div id="app8">
+    <ul>
+        <todo-item v-for="item in items" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+    </ul>
+</div>
+
+<div id="app9">
+    <h1 @:title="message">{{ message }}</h1>
+
+    <button v-bind:class="[sizeToggle ? 'large' : '', isRounded ? 'is-rounded' : '']" v-bind:style="styles" v-bind:disabled="disabled">START</button>
+
+    <ul>
+        <li><input type="checkbox" v-model="sizeToggle"><label for="">More size font</label></li>
+        <li><input type="checkbox" v-model="isRounded"><label for="">rounded</label></li>
+        <li><input type="checkbox" v-model="disabled"><label for="">Disable</label></li>
+        <li><input type="type" v-model="fontColor"></li>
+        <li><input type="type" v-model="backgroundColor"></li>
+    </ul>
+</div>
+
+<div id="app10">
+    <h1>{{ value }}</h1>
+    <h2>{{ anotherValue }}</h2>
+    <input type="text" v-model="value">
+</div>
+
+<div id="app12">
+    <task>Tasl 1</task>
+    <task>Tasl 1</task>
+    <task>Tasl 1</task>
+    <task>asd</task>
+</div>
+
+<div id="app13">
+    <template id="task">
+        <h1>Welcome</h1>
+        <button class="btn btn-success">Login</button>
+        <button class="btn btn-success">Sign up</button>
+    </template>
+</div>
+
+<div id="app14">
+    <comp message="Hello"></comp>
+</div>
+
+<div id="app15">
+    <template id="books">
+        <h1>{{ title }}</h1>
+        <h1>{{ author }}</h1>
+        <h1>{{ descr }}</h1>
+    </template>
+</div>
+
+<div id="app16">
+    <div class="container">
+        <button @click="show = !show" class="btn">Toggle</button>
+        <transition name="asd">
+            <div class="box" v-if="show"></div>
         </transition>
     </div>
+</div>
 
-    <div id="app2">
-        <ol>
-            <li v-for="item in items">
-                {{ item.text }}
-            </li>
-        </ol>
+<div id="app17">
+    <router-link to="/home">Home</router-link>
+    <router-link to="/about">About</router-link>
+    <router-link to="/blog">Blog</router-link>
+
+    <router-view></router-view>
+</div>
+
+<div id="app18">
+    <div class="task">
+        <div class="task__title">{{ title }}</div>
+        <form action="" class="task__form">
+            <div class="task__add-task">
+                <input type="text" class="form-control" placeholder="Add Task" id="itemForm">
+                <button @click="addItem" type="button">Add item</button>
+            </div>
+        </form>
+        <div class="task__container">
+            <div class="task__title">Tasks</div>
+            <div class="task__row" v-for="(item, index) in items">
+                <span>{{ index + 1 }}</span>
+                <span>{{ item.text }} </span>
+                <button @click="deleteTask(index)">Delete Task</button>
+            </div>
+        </div>
+        <button @click="deleteAll">Delete all task</button>
     </div>
+</div>
 
-    <div id="app3">
-        <span>{{ message }}</span>
-        <input type="text" v-model="message" style="width: 100%;">
-        <button v-on:click="revertMessage">Клик</button>
+<div id="app19">
+    <nav class="nav-test">
+        <transition name="fade" mode="out-in">
+            <i class="material-icons menu" v-if="!show" @click="show = !show" key="menu">Menu</i>
+            <i class="material-icons clear" v-else @click="show = !show" key="clear">Clear</i>
+        </transition>
+        <transition name="fade">
+            <ul v-if="show">
+                <li v-for="item in items"> {{ item }} </li>
+            </ul>
+        </transition>
+    </nav>
+</div>
+
+<div id="app20" class="need-all-center">
+    <h1>{{ title }}</h1>
+    <div>
+        <label for="c2">Write text</label>
+        <input type="text" id="c2" v-model="title">
     </div>
+    <button @click="reverse">{{ buttonText }}</button>
+</div>
 
-    <div id="app4">
-        <span v-if="show" v-html="message"> <strong>This is in sTrong tag with v-html derective</strong> Yep</span>
-        <span v-else> SUKA</span>
+<div id="app21" class="app-two-one">
+    <ul class="list">
+        <li v-for="item in collection">
+            {{ item }}
+        </li>
+    </ul>
+    <button class="btn" v-for="p in pagination.pages" @click.prevent="setPage(p)">{{ p }}</button>
+    <div>
+        <span>Display from index {{ pagination.startIndex }} to {{ pagination.endIndex}}</span>
     </div>
+</div>
 
-    <div id="app5">
-        <input name="c1" type="checkbox" v-model="checked">
-        <label for="c1"> {{ checked }} </label>
+<div id="app22" class="app-two-two">
+    <div>
+        <input type="password" v-model="password" v-show="!showPass">
+        <input type="text" v-model="password" v-show="showPass">
+
+        <button @click="showPass = !showPass">{{ btnText }}</button>
     </div>
+</div>
 
-    <div id="app6">
-        <h1>{{ count }}</h1>
-        <button @click="countHudred"> +100 </button>
-        <button @click="countUp"> +1 </button>
-        <button @click="countDown"> -1 </button>
-        <button @click="resetCount"> Reset </button>
-    </div>
+<div id="app23" class="app-two-three">
 
-    <div id="app7">
-        <h1>Link to: <a>{{ cleanUrl }}</a></h1>
-        <input type="text" v-model="url">
-        <button @click="cleanerUrl">Clean Url</button>
-    </div>
+</div>
 
-    <div id="app8">
-        <ul>
-            <todo-item
-                v-for="item in items"
-                v-bind:todo="item"
-                v-bind:key="item.id">
-            </todo-item>
-        </ul>
-    </div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+<script src="main.js"></script>
 
-    <div id="app9">
-        <h1 @:title="msg">{{ message }}</h1>
-
-        <button v-bind:class="[sizeToggle ? 'large' : '', isRounded ? 'is-rounded' : '']"
-                v-bind:style="styles"
-                v-bind:disabled="disabled"
-                >START</button>
-
-        <ul>
-            <li><input type="checkbox" v-model="sizeToggle"><label for="">More size font</label></li>
-            <li><input type="checkbox" v-model="isRounded"><label for="">rounded</label></li>
-            <li><input type="checkbox" v-model="disabled"><label for="">Disable</label></li>
-            <li><input type="type" v-model="fontColor"></li>
-            <li><input type="type" v-model="backgroundColor"></li>
-        </ul>
-    </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="main.js"></script>
-  
 </body>
 </html>

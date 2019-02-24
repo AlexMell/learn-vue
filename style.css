@@ -19,3 +19,27 @@ div[id*=app] {
 .is-rounded {
     border-radius: 50px;
 }
+
+.nav-test ul {
+    list-style: none;
+}
+.nav-test li {
+    width: 100%;
+    padding: 20px;
+    background-color: #f2f2f2;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+    border-radius: 2px;
+}
+
+.need-all-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.need-all-center button {
+    margin: 10px 0;
+}
